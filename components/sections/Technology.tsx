@@ -4,20 +4,20 @@
  * Phase 3 adds the fly-in 3D pieces.
  */
 const callouts = [
-  "Patent-pending interior architecture",
-  "Generative-design ribbing — strength without weight",
-  "Zero-fastener assembly — interior parts snap together",
-  "Modular layout — reconfigurable in under a day",
-  "$140K build cost — the math nobody else can hit",
+  "Proprietary 3D-printed interior — one design, perfected",
+  "Built on the Mercedes-Benz Sprinter",
+  "Hand-finished and triple-checked before every handoff",
+  "Built in San Diego — delivered across the continental US",
+  "Section 179: up to 50% savings for qualified buyers",
 ];
 
 export function Technology() {
   return (
     <section className="relative flex min-h-screen items-center bg-ms-black px-6 py-24 lg:px-16">
       <div className="mx-auto w-full max-w-[120rem]">
-        <span className="ms-caption">Technology</span>
+        <span className="ms-caption">The build</span>
         <h2 className="mt-6 max-w-3xl text-balance font-display text-display-xl leading-[1.05] text-ms-bone">
-          Impossible to replicate.
+          A proprietary 3D-printed interior.
         </h2>
 
         <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:items-center">

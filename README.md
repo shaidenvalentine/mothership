@@ -1,13 +1,15 @@
 # Mothership
 
-The most advanced website in the luxury adventure van industry — for the world's
-first 3D-printed, fully-electric, patent-pending luxury van. Dark, minimal,
-cinematic. Apple × Tesla × Polestar, built for off-grid vehicles.
+Marketing site for Mothership — Mercedes Sprinter luxury stealth camper vans with
+proprietary 3D-printed interiors. One design, perfected through years of real-world
+experience. Dark, minimal, cinematic — Apple × Tesla × Polestar for off-grid vehicles.
 
-**Status:** Phase 1 — Foundation. Static placeholder homepage, design system, layout
-shell, route stubs, and typed content. No animation / 3D / configurator / API yet
-(those land in Phases 2–5). See [`PROJECT_BRIEF.md`](./PROJECT_BRIEF.md) for the full
-spec and roadmap.
+**Status:** Foundation. Static homepage, design system, layout shell, route stubs,
+and typed content; real photography/renders wired in. No scroll animation / 3D yet.
+
+**Content source:** product info, systems, process, and copy come from
+[bucksd.com](https://bucksd.com) (Buckley Van Conversion Co.). The "Mothership"
+wordmark is the brand layer on top.
 
 ## Tech stack
 

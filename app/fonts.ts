@@ -1,18 +1,16 @@
-import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Geist, Inter_Tight, JetBrains_Mono } from "next/font/google";
 
 /**
- * Display font. Brief specifies PP Editorial New / Söhne Breit (licensed,
- * not bundled here). Fraunces is the sanctioned editorial-serif fallback.
+ * Display font — Geist. Clean modern grotesque; the technical/luxury feel of
+ * Tesla / Polestar / Apple product pages. Used for all headlines.
  */
-export const fraunces = Fraunces({
-  variable: "--font-fraunces",
+export const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
 });
 
-/** Body font. Brief specifies Söhne; Inter Tight is the sanctioned fallback. */
+/** Body font — Inter Tight. Neutral, tight grotesque for copy. */
 export const interTight = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],

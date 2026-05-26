@@ -32,10 +32,12 @@ export default async function VanDetailPage({
   }
 
   return (
-    <RouteStub eyebrow={`Build ${van.number}`} title={van.title} phase="Phase 6">
-      <p className="mt-4 text-body-lg text-ms-fog">
-        {van.platform} &middot; {van.year}
-      </p>
+    <RouteStub
+      eyebrow="The gallery"
+      title={van.title}
+      note="Full gallery coming soon."
+    >
+      <p className="mt-4 text-body-lg text-ms-fog">{van.platform}</p>
       <p className="mt-2 max-w-xl text-body text-ms-ash">{van.blurb}</p>
       <Media
         src={van.image}

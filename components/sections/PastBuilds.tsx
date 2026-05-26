@@ -13,9 +13,9 @@ export function PastBuilds() {
       <div className="mx-auto max-w-[120rem]">
         <div className="flex items-end justify-between">
           <div>
-            <span className="ms-caption">Past builds</span>
+            <span className="ms-caption">The gallery</span>
             <h2 className="mt-6 font-display text-display-lg leading-none text-ms-bone">
-              Proof of capability.
+              Inside the Mothership.
             </h2>
           </div>
           <Link
@@ -35,14 +35,13 @@ export function PastBuilds() {
                 className="aspect-[3/4] w-full transition-transform duration-500 ease-expo-out group-hover:-translate-y-1"
                 sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
               />
-              <div className="mt-5 flex items-baseline justify-between">
-                <span className="font-display text-display-md leading-none text-ms-bone">
-                  {van.number}
-                </span>
-                <span className="ms-caption">{van.year}</span>
+              <div className="mt-5">
+                <h3 className="font-display text-display-md leading-none text-ms-bone">
+                  {van.title}
+                </h3>
+                <p className="ms-caption mt-3">{van.platform}</p>
               </div>
-              <p className="mt-3 text-body-sm text-ms-fog">{van.platform}</p>
-              <p className="mt-1 text-body-sm text-ms-ash">{van.blurb}</p>
+              <p className="mt-3 text-body-sm text-ms-ash">{van.blurb}</p>
             </Link>
           ))}
         </div>

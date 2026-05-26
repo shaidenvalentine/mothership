@@ -8,8 +8,8 @@ export default function AboutPage() {
   return (
     <RouteStub
       eyebrow="About"
-      title="Built in San Diego. Designed for everywhere."
-      phase="Phase 6"
+      title="The obsession behind every build."
+      note="Built by Brandon Buckley in San Diego — full story coming soon."
     />
   );
 }

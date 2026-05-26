@@ -1,46 +1,27 @@
 import { Placeholder } from "@/components/placeholder/Placeholder";
 
 /**
- * Section 8 — Founders. Two large portraits side by side with role blocks.
- * Roles are verbatim from the brief; bio copy is a short placeholder pending
- * Shaiden + Brandon's final words.
+ * Section 8 — The maker. Built by Brandon Buckley in San Diego. Portrait is a
+ * placeholder pending a real photo of Brandon / the shop.
  */
-const founders = [
-  {
-    name: "Brandon Buckley",
-    role: "Engineering",
-    location: "San Diego shop",
-    note: "Builds the machine that builds the van.",
-  },
-  {
-    name: "Shaiden Valentine",
-    role: "Brand & Design",
-    location: "Bali",
-    note: "Shapes how the world meets Mothership.",
-  },
-];
-
 export function Founders() {
   return (
     <section className="bg-ms-black px-6 py-32 lg:px-16">
-      <div className="mx-auto max-w-[120rem]">
-        <span className="ms-caption">Founders</span>
-        <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2">
-          {founders.map((founder) => (
-            <div key={founder.name}>
-              <Placeholder label="PORTRAIT" className="aspect-[4/5] w-full" />
-              <div className="mt-6">
-                <p className="ms-caption">{founder.role}</p>
-                <h3 className="mt-2 font-display text-display-md leading-none text-ms-bone">
-                  {founder.name}
-                </h3>
-                <p className="mt-3 text-body-sm text-ms-fog">{founder.location}</p>
-                <p className="mt-2 max-w-sm text-body-sm text-ms-ash">
-                  {founder.note}
-                </p>
-              </div>
-            </div>
-          ))}
+      <div className="mx-auto grid max-w-[120rem] grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        <Placeholder label="BRANDON BUCKLEY · SAN DIEGO" className="aspect-[4/5] w-full" />
+        <div>
+          <span className="ms-caption">The maker</span>
+          <h2 className="mt-6 max-w-xl text-balance font-display text-display-lg leading-[1.05] text-ms-bone">
+            Built by hand by Brandon Buckley.
+          </h2>
+          <p className="mt-6 max-w-md text-body-lg text-ms-fog">
+            Every Mothership is built in San Diego and perfected over years of
+            real-world experience — one design, obsessed over down to the last
+            detail.
+          </p>
+          <p className="mt-4 max-w-md text-body-sm text-ms-ash">
+            Owner &amp; builder &middot; brandon@bucksd.com
+          </p>
         </div>
       </div>
     </section>

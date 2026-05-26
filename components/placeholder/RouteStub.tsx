@@ -3,16 +3,16 @@ import type { ReactNode } from "react";
 interface RouteStubProps {
   eyebrow: string;
   title: string;
-  /** Which build phase delivers this page. */
-  phase: string;
+  /** Optional footnote (e.g. a contact line or "full page coming soon"). */
+  note?: string;
   children?: ReactNode;
 }
 
 /**
- * Placeholder shell for routes whose full build lands in a later phase.
- * Renders a titled <main> with consistent rhythm under the global nav/footer.
+ * Placeholder shell for routes whose full build comes later. Renders a titled
+ * <main> with consistent rhythm under the global nav/footer.
  */
-export function RouteStub({ eyebrow, title, phase, children }: RouteStubProps) {
+export function RouteStub({ eyebrow, title, note, children }: RouteStubProps) {
   return (
     <main className="flex min-h-screen flex-col justify-center px-6 py-32 lg:px-16">
       <div className="mx-auto w-full max-w-[120rem]">
@@ -21,7 +21,7 @@ export function RouteStub({ eyebrow, title, phase, children }: RouteStubProps) {
           {title}
         </h1>
         {children}
-        <p className="ms-caption mt-12 text-ms-ash">Coming in {phase}</p>
+        {note ? <p className="ms-caption mt-12 text-ms-ash">{note}</p> : null}
       </div>
     </main>
   );

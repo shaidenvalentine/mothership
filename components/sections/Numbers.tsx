@@ -3,10 +3,10 @@
  * count-up on scroll-into-view.
  */
 const stats = [
-  { value: "6 weeks", label: "average build time" },
-  { value: "$140K", label: "build cost we hit (others hit $250K+)" },
-  { value: "15+ kWh", label: "onboard energy storage" },
-  { value: "8", label: "seats in the lounge" },
+  { value: "~2 mo", label: "from deposit to keys in hand" },
+  { value: "1 design", label: "perfected through years of real-world experience" },
+  { value: "Lower 48", label: "delivered anywhere in the continental US" },
+  { value: "Up to 50%", label: "Section 179 savings for qualified buyers" },
 ];
 
 export function Numbers() {

@@ -2,52 +2,56 @@ import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Media } from "@/components/media/Media";
-import { configOptions } from "@/content/config-options";
 import { cn } from "@/lib/utils";
 
 /**
- * Section 6 — Configurator teaser. Half-screen split: van shifting through
- * interior palettes (left) + copy & CTA (right). Phase 4 wires the live 3D.
+ * Section 6 — Reserve. Half-screen split: the interior (left) + the reservation
+ * path (right). A 50% deposit secures the build slot (bucksd.com process).
  */
 export function ConfiguratorTeaser() {
   return (
     <section className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
-      {/* Left: palette preview */}
+      {/* Left: interior */}
       <div className="relative flex items-center justify-center bg-ms-obsidian p-10 lg:p-16">
         <Media
           src="/images/render-bed.jpg"
-          alt="Mothership interior in the Ember palette"
+          alt="Mothership 3D-printed interior"
           className="aspect-square w-full max-w-xl"
           sizes="(min-width: 1024px) 50vw, 100vw"
         />
-        <div className="absolute bottom-10 left-10 flex gap-3 lg:left-16">
-          {configOptions.interiorPalettes.map((palette) => (
-            <span
-              key={palette.id}
-              title={palette.name}
-              className="size-6 rounded-full border border-ms-graphite"
-              style={{ backgroundColor: palette.swatch }}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Right: copy */}
       <div className="flex items-center bg-ms-black px-6 py-24 lg:px-16">
         <div className="max-w-md">
-          <span className="ms-caption">Configurator</span>
+          <span className="ms-caption">Reserve</span>
           <h2 className="mt-6 text-balance font-display text-display-lg leading-[1.05] text-ms-bone">
-            Design yours. Start with a palette.
+            Reserve your Mothership.
           </h2>
-          <Link
-            href="/configure"
-            className={cn(
-              buttonVariants({ size: "lg" }),
-              "mt-10 rounded-full bg-ms-bone px-7 text-ms-black hover:bg-ms-paper",
-            )}
-          >
-            Configure Your Mothership
-          </Link>
+          <p className="mt-6 text-body-lg text-ms-fog">
+            A 50% deposit secures your build slot. We purchase the van and begin
+            your build — about two months from deposit to keys.
+          </p>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <Link
+              href="/configure"
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "rounded-full bg-ms-bone px-7 text-ms-black hover:bg-ms-paper",
+              )}
+            >
+              Reserve Your Build
+            </Link>
+            <Link
+              href="/contact"
+              className={cn(
+                buttonVariants({ size: "lg", variant: "outline" }),
+                "rounded-full border-ms-graphite px-7 text-ms-bone hover:bg-ms-obsidian",
+              )}
+            >
+              Schedule a Consultation
+            </Link>
+          </div>
         </div>
       </div>
     </section>

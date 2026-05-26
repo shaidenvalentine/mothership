@@ -176,7 +176,7 @@
   --color-ms-danger: oklch(0.65 0.22 25);
 
   /* Fonts (next/font variables set in layout.tsx) */
-  --font-display: var(--font-fraunces), "PP Editorial New", Georgia, serif;
+  --font-display: var(--font-geist), system-ui, sans-serif;
   --font-body: var(--font-inter-tight), "Söhne", system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), "IBM Plex Mono", monospace;
 
@@ -262,7 +262,8 @@
   h3,
   h4 {
     @apply font-display;
-    font-weight: 400;
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 }
 

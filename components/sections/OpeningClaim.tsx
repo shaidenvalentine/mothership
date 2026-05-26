@@ -3,9 +3,9 @@
  * Phase 2 adds the word-by-word reveal + per-claim background shift.
  */
 const claims = [
-  "3D-printed. Patented manufacturing nobody else can replicate.",
-  "Fully electric. Zero compromise, infinite range with the right infrastructure.",
-  "Six weeks. From order to delivery. The industry takes a year.",
+  "Mercedes Sprinter, reimagined with a proprietary 3D-printed interior.",
+  "One design, perfected through years of real-world experience.",
+  "Built by hand in San Diego. Delivered anywhere in the continental US.",
 ];
 
 export function OpeningClaim() {

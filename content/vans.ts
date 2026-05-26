@@ -1,48 +1,39 @@
 import type { Van } from "@/types";
 
 /**
- * Past builds gallery (brief §7). The brief references Mothership #3, #5 and the
- * newer 3D-printed builds but does not provide per-build specs/copy — the
- * fields below are PLACEHOLDERS pending Shaiden's real build photos + data.
+ * Gallery of the Mothership — one design, shown across its spaces and angles.
+ * Photography + renders from bucksd.com. Grounded copy, no fabricated specs.
  */
 export const vans: Van[] = [
   {
-    slug: "mothership-3",
-    number: "#3",
-    title: "Mothership #3",
-    blurb: "Full off-grid conversion. Proof of the platform.",
-    year: 2023,
-    platform: "Sprinter 170 EXT",
+    slug: "the-stealth-exterior",
+    title: "The Stealth Exterior",
+    blurb: "Luxury that hides in plain sight.",
+    platform: "Mercedes-Benz Sprinter 170",
     accent: "oklch(0.5 0.01 250)",
-    image: "/images/lounge-warm.jpg",
+    image: "/images/exterior-front.jpg",
   },
   {
-    slug: "mothership-5",
-    number: "#5",
-    title: "Mothership #5",
-    blurb: "Refined layout, expanded power, four-season capability.",
-    year: 2024,
-    platform: "Sprinter 170 EXT",
-    accent: "oklch(0.4 0.07 50)",
+    slug: "the-lounge",
+    title: "The Lounge",
+    blurb: "Ambient-lit living that glows at golden hour.",
+    platform: "3D-printed interior",
+    accent: "oklch(0.72 0.18 50)",
     image: "/images/lounge-golden.jpg",
   },
   {
-    slug: "mothership-6",
-    number: "#6",
-    title: "Mothership #6",
-    blurb: "First build with 3D-printed interior architecture.",
-    year: 2025,
-    platform: "3D-printed Mothership",
-    accent: "oklch(0.78 0.16 230)",
-    image: "/images/render-dining.jpg",
+    slug: "the-galley",
+    title: "The Galley",
+    blurb: "A real kitchen, beautifully integrated.",
+    platform: "3D-printed interior",
+    accent: "oklch(0.45 0.02 80)",
+    image: "/images/kitchen-detail.jpg",
   },
   {
-    slug: "mothership-7",
-    number: "#7",
-    title: "Mothership #7",
-    blurb: "Fully electric drivetrain. The production blueprint.",
-    year: 2026,
-    platform: "3D-printed Mothership",
+    slug: "the-bedroom",
+    title: "The Bedroom",
+    blurb: "Wake up to the view, wherever you parked.",
+    platform: "3D-printed interior",
     accent: "oklch(0.72 0.18 50)",
     image: "/images/render-bed.jpg",
   },

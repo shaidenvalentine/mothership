@@ -3,29 +3,29 @@ import type { SiteConfig } from "@/types";
 export const site: SiteConfig = {
   name: "Mothership",
   wordmark: "MOTHERSHIP",
-  tagline: "Your next home may not have an address.",
+  tagline: "Luxury redefined.",
   description:
-    "The world's first 3D-printed, fully-electric, patent-pending luxury adventure van. Six-week builds. Cost basis nobody else can touch.",
+    "Mercedes Sprinter luxury stealth camper vans with proprietary 3D-printed interiors. One design, perfected through years of real-world experience. Built in San Diego, delivered across the continental US.",
   url: "https://mothership.com",
   address: "San Diego, California",
   copyright: "Mothership © 2026",
 
   navLinks: [
-    { label: "Technology", href: "/technology" },
-    { label: "Vehicles", href: "/vans" },
     { label: "Process", href: "/process" },
+    { label: "Builds", href: "/vans" },
+    { label: "Tax Benefits", href: "/tax-benefits" },
     { label: "About", href: "/about" },
   ],
 
-  primaryCta: { label: "Configure", href: "/configure" },
+  primaryCta: { label: "Reserve", href: "/configure" },
 
   footerColumns: [
     {
       heading: "Vehicle",
       links: [
-        { label: "Configure", href: "/configure" },
-        { label: "Technology", href: "/technology" },
-        { label: "Past Builds", href: "/vans" },
+        { label: "Reserve", href: "/configure" },
+        { label: "The Build", href: "/technology" },
+        { label: "Builds", href: "/vans" },
         { label: "Process", href: "/process" },
       ],
     },
@@ -34,30 +34,32 @@ export const site: SiteConfig = {
       links: [
         { label: "About", href: "/about" },
         { label: "Contact", href: "/contact" },
+        { label: "Tax Benefits", href: "/tax-benefits" },
       ],
     },
     {
-      heading: "Resources",
+      heading: "Buying",
       links: [
-        { label: "Order", href: "#" },
-        { label: "Financing", href: "#" },
-        { label: "Warranty", href: "#" },
-        { label: "Press", href: "#" },
+        { label: "Reserve a build", href: "/configure" },
+        { label: "Schedule a consultation", href: "/contact" },
+        { label: "Section 179", href: "/tax-benefits" },
       ],
     },
     {
       heading: "Connect",
       links: [
-        { label: "Instagram", href: "#", external: true },
-        { label: "YouTube", href: "#", external: true },
-        { label: "TikTok", href: "#", external: true },
+        {
+          label: "Instagram",
+          href: "https://instagram.com/bucksd",
+          external: true,
+        },
+        { label: "Email", href: "mailto:brandon@bucksd.com", external: true },
       ],
     },
   ],
 
   socials: [
-    { label: "Instagram", href: "#" },
-    { label: "YouTube", href: "#" },
-    { label: "TikTok", href: "#" },
+    { label: "Instagram", href: "https://instagram.com/bucksd" },
+    { label: "Email", href: "mailto:brandon@bucksd.com" },
   ],
 };
