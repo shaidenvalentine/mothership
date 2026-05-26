@@ -2,6 +2,7 @@ import { ConfiguratorTeaser } from "@/components/sections/ConfiguratorTeaser";
 import { FeatureReveals } from "@/components/sections/FeatureReveals";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Founders } from "@/components/sections/Founders";
+import { Future } from "@/components/sections/Future";
 import { HeroScroll } from "@/components/sections/HeroScroll";
 import { Numbers } from "@/components/sections/Numbers";
 import { OpeningClaim } from "@/components/sections/OpeningClaim";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <ConfiguratorTeaser />
       <PastBuilds />
       <Founders />
+      <Future />
       <FinalCta />
     </main>
   );

@@ -5,7 +5,7 @@ export const site: SiteConfig = {
   wordmark: "MOTHERSHIP",
   tagline: "Luxury redefined.",
   description:
-    "Mercedes Sprinter luxury stealth camper vans with proprietary 3D-printed interiors. One design, perfected through years of real-world experience. Built in San Diego, delivered across the continental US.",
+    "The all-electric, self-charging, fully off-grid camper van of the future. A proprietary, carbon-fiber 3D-printed interior on the Mercedes Sprinter — built by hand in San Diego, delivered across the continental US.",
   url: "https://mothership.com",
   address: "San Diego, California",
   copyright: "Mothership © 2026",

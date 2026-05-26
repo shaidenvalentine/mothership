@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Reveal } from "@/components/anim/Reveal";
@@ -6,21 +7,32 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 /**
- * Section 9 — Final CTA. Reserve a build or schedule a consultation.
+ * Section 10 — Final CTA. Reserve a build or schedule a consultation.
  */
 export function FinalCta() {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center bg-ms-black px-6 text-center">
-      <h2 className="max-w-4xl font-display text-display-xl leading-[1.0] text-ms-bone">
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
+      <Image
+        src="/images/hero-exterior-sunset.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-b from-ms-black/85 via-ms-black/70 to-ms-black"
+      />
+      <h2 className="relative z-10 max-w-4xl font-display text-display-xl leading-[1.0] text-ms-bone drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)]">
         <WordReveal text="Reserve your Mothership." />
       </h2>
-      <Reveal y={20} delay={0.15}>
+      <Reveal y={20} delay={0.15} className="relative z-10">
         <p className="mx-auto mt-6 max-w-xl text-balance text-body-lg text-ms-fog">
           A 50% deposit secures your build slot. About two months from deposit
           to keys in hand.
         </p>
       </Reveal>
-      <Reveal y={20} delay={0.25} className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
+      <Reveal y={20} delay={0.25} className="relative z-10 mt-12 flex flex-col items-center gap-4 sm:flex-row">
         <Link
           href="/configure"
           className={cn(

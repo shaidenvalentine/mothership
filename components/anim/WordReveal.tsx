@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 interface WordRevealProps {
@@ -12,6 +12,9 @@ interface WordRevealProps {
  * Word-by-word mask reveal for headlines, triggered by IntersectionObserver.
  * Renders inline word spans (preserving the surrounding heading element), each
  * rising out of a clipped mask. Reduced-motion shows the words instantly.
+ *
+ * Spaces are real text nodes BETWEEN the inline-block word masks so the words
+ * don't run together (trailing whitespace inside an inline-block collapses).
  */
 export function WordReveal({ text, className }: WordRevealProps) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -53,15 +56,14 @@ export function WordReveal({ text, className }: WordRevealProps) {
   return (
     <span ref={ref} className={className}>
       {words.map((word, i) => (
-        <span
-          key={`${word}-${i}`}
-          className="inline-block overflow-hidden align-bottom"
-        >
-          <span data-word className="inline-block" style={{ opacity: 0 }}>
-            {word}
-            {i < words.length - 1 ? " " : ""}
+        <Fragment key={`${word}-${i}`}>
+          <span className="inline-block overflow-hidden pb-[0.12em] align-bottom">
+            <span data-word className="inline-block" style={{ opacity: 0 }}>
+              {word}
+            </span>
           </span>
-        </span>
+          {i < words.length - 1 ? " " : null}
+        </Fragment>
       ))}
     </span>
   );
