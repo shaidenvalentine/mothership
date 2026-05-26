@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Placeholder } from "@/components/placeholder/Placeholder";
+import { Media } from "@/components/media/Media";
 import { features } from "@/content/features";
 
 /**
@@ -19,9 +19,11 @@ export function FeatureReveals() {
           <div className="mx-auto grid w-full max-w-[120rem] items-center gap-12 lg:grid-cols-2">
             {/* Media — alternate sides */}
             <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-              <Placeholder
-                label="VIDEO LOOP"
+              <Media
+                src={feature.image}
+                alt={feature.title}
                 className="aspect-[4/3] w-full"
+                sizes="(min-width: 1024px) 50vw, 100vw"
               />
             </div>
 

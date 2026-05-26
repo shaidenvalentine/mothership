@@ -12,6 +12,8 @@ export interface Van {
   year: number;
   /** Platform / chassis. */
   platform: string;
-  /** Accent color for the placeholder card. */
+  /** Accent color (fallback tint behind the image). */
   accent: string;
+  /** Card / hero image (path under /public). */
+  image: string;
 }

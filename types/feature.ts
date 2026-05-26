@@ -12,4 +12,6 @@ export interface Feature {
   keySpec: string;
   /** Destination for the "learn more" link. */
   learnMoreHref: string;
+  /** Panel image (path under /public). */
+  image: string;
 }

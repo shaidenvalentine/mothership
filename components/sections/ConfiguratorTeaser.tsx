@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
-import { Placeholder } from "@/components/placeholder/Placeholder";
+import { Media } from "@/components/media/Media";
 import { configOptions } from "@/content/config-options";
 import { cn } from "@/lib/utils";
 
@@ -14,7 +14,12 @@ export function ConfiguratorTeaser() {
     <section className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
       {/* Left: palette preview */}
       <div className="relative flex items-center justify-center bg-ms-obsidian p-10 lg:p-16">
-        <Placeholder label="PALETTE PREVIEW" className="aspect-square w-full max-w-xl" />
+        <Media
+          src="/images/render-bed.jpg"
+          alt="Mothership interior in the Ember palette"
+          className="aspect-square w-full max-w-xl"
+          sizes="(min-width: 1024px) 50vw, 100vw"
+        />
         <div className="absolute bottom-10 left-10 flex gap-3 lg:left-16">
           {configOptions.interiorPalettes.map((palette) => (
             <span

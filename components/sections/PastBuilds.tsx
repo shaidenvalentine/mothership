@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Placeholder } from "@/components/placeholder/Placeholder";
+import { Media } from "@/components/media/Media";
 import { vans } from "@/content/vans";
 
 /**
@@ -29,9 +29,11 @@ export function PastBuilds() {
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {vans.map((van) => (
             <Link key={van.slug} href={`/vans/${van.slug}`} className="group">
-              <Placeholder
-                accent={van.accent}
+              <Media
+                src={van.image}
+                alt={`${van.title} — ${van.platform}`}
                 className="aspect-[3/4] w-full transition-transform duration-500 ease-expo-out group-hover:-translate-y-1"
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
               />
               <div className="mt-5 flex items-baseline justify-between">
                 <span className="font-display text-display-md leading-none text-ms-bone">

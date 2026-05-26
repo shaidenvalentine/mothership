@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { Placeholder } from "@/components/placeholder/Placeholder";
+import { Media } from "@/components/media/Media";
 import { RouteStub } from "@/components/placeholder/RouteStub";
 import { getVanBySlug, vans } from "@/content/vans";
 
@@ -37,10 +37,11 @@ export default async function VanDetailPage({
         {van.platform} &middot; {van.year}
       </p>
       <p className="mt-2 max-w-xl text-body text-ms-ash">{van.blurb}</p>
-      <Placeholder
-        accent={van.accent}
-        label="GALLERY"
+      <Media
+        src={van.image}
+        alt={`${van.title} — ${van.platform}`}
         className="mt-12 aspect-[16/9] w-full"
+        sizes="100vw"
       />
     </RouteStub>
   );

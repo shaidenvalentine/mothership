@@ -14,6 +14,7 @@ export const vans: Van[] = [
     year: 2023,
     platform: "Sprinter 170 EXT",
     accent: "oklch(0.5 0.01 250)",
+    image: "/images/lounge-warm.jpg",
   },
   {
     slug: "mothership-5",
@@ -23,6 +24,7 @@ export const vans: Van[] = [
     year: 2024,
     platform: "Sprinter 170 EXT",
     accent: "oklch(0.4 0.07 50)",
+    image: "/images/lounge-golden.jpg",
   },
   {
     slug: "mothership-6",
@@ -32,6 +34,7 @@ export const vans: Van[] = [
     year: 2025,
     platform: "3D-printed Mothership",
     accent: "oklch(0.78 0.16 230)",
+    image: "/images/render-dining.jpg",
   },
   {
     slug: "mothership-7",
@@ -41,6 +44,7 @@ export const vans: Van[] = [
     year: 2026,
     platform: "3D-printed Mothership",
     accent: "oklch(0.72 0.18 50)",
+    image: "/images/render-bed.jpg",
   },
 ];
 

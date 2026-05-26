@@ -13,6 +13,7 @@ export const features: Feature[] = [
     subtitle: "Geometry that wasn't possible before",
     keySpec: "Patent-pending · zero-fastener assembly",
     learnMoreHref: "/technology",
+    image: "/images/render-consoles.png",
   },
   {
     id: "electric-drivetrain",
@@ -21,6 +22,7 @@ export const features: Feature[] = [
     subtitle: "Silent. Off-grid. Always ready.",
     keySpec: "Fully electric",
     learnMoreHref: "/technology",
+    image: "/images/exterior-head-on.jpg",
   },
   {
     id: "spark-core",
@@ -29,6 +31,7 @@ export const features: Feature[] = [
     subtitle: "15+ kWh. Solar + dual alternator. Weeks off-grid.",
     keySpec: "15+ kWh onboard storage",
     learnMoreHref: "/technology",
+    image: "/images/systems-rear-doors.jpg",
   },
   {
     id: "spa-bathroom",
@@ -37,6 +40,7 @@ export const features: Feature[] = [
     subtitle: "No dump stations. Ever.",
     keySpec: "Incinerating toilet · no dump stations",
     learnMoreHref: "/technology",
+    image: "/images/render-toilet.jpg",
   },
   {
     id: "induction-kitchen",
@@ -45,6 +49,7 @@ export const features: Feature[] = [
     subtitle: "Surface up. Surface down. Magic.",
     keySpec: "Flush induction surface",
     learnMoreHref: "/technology",
+    image: "/images/render-kitchen.jpg",
   },
   {
     id: "spa-shower",
@@ -53,6 +58,7 @@ export const features: Feature[] = [
     subtitle: "Five-star hotel, anywhere on Earth.",
     keySpec: "Real tile + teak",
     learnMoreHref: "/technology",
+    image: "/images/render-shower.jpg",
   },
   {
     id: "awd-suspension",
@@ -61,6 +67,7 @@ export const features: Feature[] = [
     subtitle: "Drive past where the pavement ends.",
     keySpec: "All-wheel drive · lifted",
     learnMoreHref: "/technology",
+    image: "/images/exterior-front.jpg",
   },
   {
     id: "starlink-smart-home",
@@ -69,5 +76,6 @@ export const features: Feature[] = [
     subtitle: "Work anywhere. Live everywhere.",
     keySpec: "Starlink · smart-home control",
     learnMoreHref: "/technology",
+    image: "/images/render-desk.jpg",
   },
 ];
