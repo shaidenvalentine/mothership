@@ -1,7 +1,9 @@
 "use client";
 
-import { Fragment, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+
+import { cn } from "@/lib/utils";
 
 interface WordRevealProps {
   text: string;
@@ -13,8 +15,9 @@ interface WordRevealProps {
  * Renders inline word spans (preserving the surrounding heading element), each
  * rising out of a clipped mask. Reduced-motion shows the words instantly.
  *
- * Spaces are real text nodes BETWEEN the inline-block word masks so the words
- * don't run together (trailing whitespace inside an inline-block collapses).
+ * Inter-word spacing uses an em-based right margin (NOT a whitespace text node,
+ * which collapses between inline-block boxes). aria-label keeps it readable to
+ * assistive tech while the visible words are split.
  */
 export function WordReveal({ text, className }: WordRevealProps) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -54,16 +57,20 @@ export function WordReveal({ text, className }: WordRevealProps) {
   }, []);
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} aria-label={text} className={className}>
       {words.map((word, i) => (
-        <Fragment key={`${word}-${i}`}>
-          <span className="inline-block overflow-hidden pb-[0.12em] align-bottom">
-            <span data-word className="inline-block" style={{ opacity: 0 }}>
-              {word}
-            </span>
+        <span
+          key={`${word}-${i}`}
+          aria-hidden
+          className={cn(
+            "inline-block overflow-hidden pb-[0.12em] align-bottom",
+            i < words.length - 1 && "mr-[0.25em]",
+          )}
+        >
+          <span data-word className="inline-block" style={{ opacity: 0 }}>
+            {word}
           </span>
-          {i < words.length - 1 ? " " : null}
-        </Fragment>
+        </span>
       ))}
     </span>
   );

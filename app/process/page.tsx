@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Process" };
 const steps = [
   {
     title: "Discovery call",
-    body: "Meet Brandon, talk through your vision, and confirm it's a fit.",
+    body: "Meet Shaiden, talk through your vision, and confirm it's a fit.",
   },
   {
     title: "Deposit",
