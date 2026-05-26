@@ -1,26 +1,276 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
+/* ============================================================
+   shadcn foundation — vendored from `shadcn/dist/tailwind.css`.
+   (The package exports this only under the `style` condition, which
+   the PostCSS/Turbopack resolver doesn't honor, so it's inlined here.
+   `pnpm dlx shadcn@latest add ...` still works for new components.)
+   ============================================================ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(
+        --radix-accordion-content-height,
+        var(--accordion-panel-height, auto)
+      );
+    }
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @keyframes accordion-up {
+    from {
+      height: var(
+        --radix-accordion-content-height,
+        var(--accordion-panel-height, auto)
+      );
+    }
+    to {
+      height: 0;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@custom-variant data-open {
+  &:where([data-state="open"]),
+  &:where([data-open]:not([data-open="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-closed {
+  &:where([data-state="closed"]),
+  &:where([data-closed]:not([data-closed="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-checked {
+  &:where([data-state="checked"]),
+  &:where([data-checked]:not([data-checked="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-unchecked {
+  &:where([data-state="unchecked"]),
+  &:where([data-unchecked]:not([data-unchecked="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-selected {
+  &:where([data-selected="true"]) {
+    @slot;
+  }
+}
+
+@custom-variant data-disabled {
+  &:where([data-disabled="true"]),
+  &:where([data-disabled]:not([data-disabled="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-active {
+  &:where([data-state="active"]),
+  &:where([data-active]:not([data-active="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-horizontal {
+  &:where([data-orientation="horizontal"]) {
+    @slot;
+  }
+}
+
+@custom-variant data-vertical {
+  &:where([data-orientation="vertical"]) {
+    @slot;
+  }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ============================================================
+   shadcn semantic token -> Tailwind color mapping
+   ============================================================ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* ============================================================
+   Mothership brand theme — exposes utilities:
+   bg-ms-*, text-ms-*, font-display/body/mono,
+   text-display-*, text-body-*, ease-expo-out, etc.
+   ============================================================ */
+@theme {
+  /* Base palette (OKLCH — perceptually uniform) */
+  --color-ms-black: oklch(0.08 0 0); /* #0A0A0A — true page bg */
+  --color-ms-obsidian: oklch(0.13 0 0); /* #1A1A1A — card bg */
+  --color-ms-graphite: oklch(0.22 0 0); /* #2D2D2D — borders */
+  --color-ms-ash: oklch(0.45 0 0); /* #6E6E6E — secondary text */
+  --color-ms-fog: oklch(0.72 0 0); /* #B0B0B0 — captions */
+  --color-ms-bone: oklch(0.94 0.005 80); /* #F0EEEA — primary text, warm */
+  --color-ms-paper: oklch(0.98 0.005 80); /* #F8F6F2 — surfaces */
+
+  /* Accents — Mothership signature */
+  --color-ms-ion: oklch(0.78 0.16 230); /* cool electric blue */
+  --color-ms-ember: oklch(0.72 0.18 50); /* warm copper */
+
+  /* System */
+  --color-ms-success: oklch(0.72 0.18 145);
+  --color-ms-warning: oklch(0.78 0.18 75);
+  --color-ms-danger: oklch(0.65 0.22 25);
+
+  /* Fonts (next/font variables set in layout.tsx) */
+  --font-display: var(--font-fraunces), "PP Editorial New", Georgia, serif;
+  --font-body: var(--font-inter-tight), "Söhne", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "IBM Plex Mono", monospace;
+
+  /* Type scale — modular ratio 1.333, fluid clamp */
+  --text-display-2xl: clamp(4.5rem, 10vw, 9rem); /* hero */
+  --text-display-xl: clamp(3rem, 7vw, 6rem); /* section heads */
+  --text-display-lg: clamp(2.25rem, 5vw, 4rem); /* feature heads */
+  --text-display-md: clamp(1.75rem, 3vw, 2.5rem);
+  --text-body-lg: 1.25rem;
+  --text-body: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-caption: 0.75rem; /* uppercase, tracking-wider */
+
+  /* Custom easing curves */
+  --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-power-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-back-out: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Spacing scale — 4px base (section rhythm) */
+  --spacing-section: 8rem; /* 128px vertical section padding */
+  --spacing-gutter: 1.5rem; /* page horizontal gutter (mobile) */
+  --spacing-gutter-lg: 4rem; /* page horizontal gutter (desktop) */
+}
+
+/* ============================================================
+   Semantic tokens mapped onto the Mothership dark palette.
+   The site is dark by default — :root carries the dark brand.
+   ============================================================ */
+:root {
+  --radius: 0.5rem;
+
+  --font-sans: var(--font-inter-tight), "Söhne", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "IBM Plex Mono", monospace;
+
+  --background: var(--color-ms-black);
+  --foreground: var(--color-ms-bone);
+  --card: var(--color-ms-obsidian);
+  --card-foreground: var(--color-ms-bone);
+  --popover: var(--color-ms-obsidian);
+  --popover-foreground: var(--color-ms-bone);
+  --primary: var(--color-ms-bone);
+  --primary-foreground: var(--color-ms-black);
+  --secondary: var(--color-ms-graphite);
+  --secondary-foreground: var(--color-ms-bone);
+  --muted: var(--color-ms-obsidian);
+  --muted-foreground: var(--color-ms-fog);
+  --accent: var(--color-ms-ion);
+  --accent-foreground: var(--color-ms-black);
+  --destructive: var(--color-ms-danger);
+  --border: var(--color-ms-graphite);
+  --input: var(--color-ms-graphite);
+  --ring: var(--color-ms-ion);
+
+  --chart-1: var(--color-ms-ion);
+  --chart-2: var(--color-ms-ember);
+  --chart-3: var(--color-ms-fog);
+  --chart-4: var(--color-ms-ash);
+  --chart-5: var(--color-ms-graphite);
+
+  --sidebar: var(--color-ms-obsidian);
+  --sidebar-foreground: var(--color-ms-bone);
+  --sidebar-primary: var(--color-ms-ion);
+  --sidebar-primary-foreground: var(--color-ms-black);
+  --sidebar-accent: var(--color-ms-graphite);
+  --sidebar-accent-foreground: var(--color-ms-bone);
+  --sidebar-border: var(--color-ms-graphite);
+  --sidebar-ring: var(--color-ms-ion);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-body antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    font-weight: 400;
+  }
+}
+
+/* Editorial uppercase caption helper used across sections */
+.ms-caption {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ms-fog);
 }
