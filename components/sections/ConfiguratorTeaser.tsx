@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Reveal } from "@/components/anim/Reveal";
 import { buttonVariants } from "@/components/ui/button";
 import { Media } from "@/components/media/Media";
 import { cn } from "@/lib/utils";
@@ -13,17 +14,19 @@ export function ConfiguratorTeaser() {
     <section className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
       {/* Left: interior */}
       <div className="relative flex items-center justify-center bg-ms-obsidian p-10 lg:p-16">
-        <Media
-          src="/images/render-bed.jpg"
-          alt="Mothership 3D-printed interior"
-          className="aspect-square w-full max-w-xl"
-          sizes="(min-width: 1024px) 50vw, 100vw"
-        />
+        <Reveal scaleFrom={1.06} className="w-full max-w-xl">
+          <Media
+            src="/images/render-bed.jpg"
+            alt="Mothership 3D-printed interior"
+            className="aspect-square w-full"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+          />
+        </Reveal>
       </div>
 
       {/* Right: copy */}
       <div className="flex items-center bg-ms-black px-6 py-24 lg:px-16">
-        <div className="max-w-md">
+        <Reveal className="max-w-md">
           <span className="ms-caption">Reserve</span>
           <h2 className="mt-6 text-balance font-display text-display-lg leading-[1.05] text-ms-bone">
             Reserve your Mothership.
@@ -52,7 +55,7 @@ export function ConfiguratorTeaser() {
               Schedule a Consultation
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

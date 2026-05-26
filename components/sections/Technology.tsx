@@ -1,3 +1,6 @@
+import { Reveal } from "@/components/anim/Reveal";
+import { WordReveal } from "@/components/anim/WordReveal";
+
 /**
  * Section 4 — Technology. Tron-style wireframe reveal of the printed interior.
  * Phase 1 surfaces the tech sizzle video + the five callouts (verbatim).
@@ -15,32 +18,37 @@ export function Technology() {
   return (
     <section className="relative flex min-h-screen items-center bg-ms-black px-6 py-24 lg:px-16">
       <div className="mx-auto w-full max-w-[120rem]">
-        <span className="ms-caption">The build</span>
-        <h2 className="mt-6 max-w-3xl text-balance font-display text-display-xl leading-[1.05] text-ms-bone">
-          A proprietary 3D-printed interior.
+        <Reveal y={12}>
+          <span className="ms-caption">The build</span>
+        </Reveal>
+        <h2 className="mt-6 max-w-3xl font-display text-display-xl leading-[1.05] text-ms-bone">
+          <WordReveal text="A proprietary 3D-printed interior." />
         </h2>
 
         <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-ms-graphite/70 bg-ms-obsidian">
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster="/images/render-consoles.png"
-            >
-              <source src="/images/tech-sizzle.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <ul className="divide-y divide-ms-graphite/60 border-y border-ms-graphite/60">
-            {callouts.map((callout) => (
-              <li
-                key={callout}
-                className="py-5 text-body-lg text-ms-fog"
+          <Reveal scaleFrom={1.05}>
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-ms-graphite/70 bg-ms-obsidian">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/images/render-consoles.png"
               >
-                {callout}
+                <source src="/images/tech-sizzle.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </Reveal>
+          <ul className="divide-y divide-ms-graphite/60 border-y border-ms-graphite/60">
+            {callouts.map((callout, i) => (
+              <li key={callout}>
+                <Reveal y={16} delay={i * 0.08}>
+                  <span className="block py-5 text-body-lg text-ms-fog">
+                    {callout}
+                  </span>
+                </Reveal>
               </li>
             ))}
           </ul>

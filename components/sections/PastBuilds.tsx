@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Reveal } from "@/components/anim/Reveal";
 import { Media } from "@/components/media/Media";
 import { vans } from "@/content/vans";
 
@@ -12,12 +13,12 @@ export function PastBuilds() {
     <section className="bg-ms-black px-6 py-32 lg:px-16">
       <div className="mx-auto max-w-[120rem]">
         <div className="flex items-end justify-between">
-          <div>
+          <Reveal>
             <span className="ms-caption">The gallery</span>
             <h2 className="mt-6 font-display text-display-lg leading-none text-ms-bone">
               Inside the Mothership.
             </h2>
-          </div>
+          </Reveal>
           <Link
             href="/vans"
             className="hidden text-body-sm text-ms-ion transition-opacity hover:opacity-70 sm:inline"
@@ -27,8 +28,9 @@ export function PastBuilds() {
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {vans.map((van) => (
-            <Link key={van.slug} href={`/vans/${van.slug}`} className="group">
+          {vans.map((van, i) => (
+            <Reveal key={van.slug} y={32} delay={i * 0.08}>
+              <Link href={`/vans/${van.slug}`} className="group">
               <Media
                 src={van.image}
                 alt={`${van.title} — ${van.platform}`}
@@ -42,7 +44,8 @@ export function PastBuilds() {
                 <p className="ms-caption mt-3">{van.platform}</p>
               </div>
               <p className="mt-3 text-body-sm text-ms-ash">{van.blurb}</p>
-            </Link>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </div>

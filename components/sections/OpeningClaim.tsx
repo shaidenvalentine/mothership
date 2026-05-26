@@ -1,6 +1,9 @@
+import { Reveal } from "@/components/anim/Reveal";
+import { WordReveal } from "@/components/anim/WordReveal";
+
 /**
- * Section 2 — The opening claim. Three full-screen statements (verbatim).
- * Phase 2 adds the word-by-word reveal + per-claim background shift.
+ * Section 2 — The opening claim. Three full-screen statements (verbatim from
+ * bucksd.com positioning), each revealing word-by-word as it scrolls in.
  */
 const claims = [
   "Mercedes Sprinter, reimagined with a proprietary 3D-printed interior.",
@@ -17,9 +20,13 @@ export function OpeningClaim() {
           className="flex min-h-screen items-center justify-center px-6 lg:px-16"
         >
           <div className="mx-auto max-w-5xl">
-            <span className="ms-caption">{String(i + 1).padStart(2, "0")}</span>
-            <p className="mt-6 text-balance font-display text-display-xl leading-[1.05] text-ms-bone">
-              {claim}
+            <Reveal y={12}>
+              <span className="ms-caption">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+            </Reveal>
+            <p className="mt-6 font-display text-display-xl leading-[1.05] text-ms-bone">
+              <WordReveal text={claim} />
             </p>
           </div>
         </div>

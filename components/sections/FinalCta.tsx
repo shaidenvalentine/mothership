@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { Reveal } from "@/components/anim/Reveal";
+import { WordReveal } from "@/components/anim/WordReveal";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -9,14 +11,16 @@ import { cn } from "@/lib/utils";
 export function FinalCta() {
   return (
     <section className="flex min-h-screen flex-col items-center justify-center bg-ms-black px-6 text-center">
-      <h2 className="max-w-4xl text-balance font-display text-display-xl leading-[1.0] text-ms-bone">
-        Reserve your Mothership.
+      <h2 className="max-w-4xl font-display text-display-xl leading-[1.0] text-ms-bone">
+        <WordReveal text="Reserve your Mothership." />
       </h2>
-      <p className="mt-6 max-w-xl text-balance text-body-lg text-ms-fog">
-        A 50% deposit secures your build slot. About two months from deposit to
-        keys in hand.
-      </p>
-      <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
+      <Reveal y={20} delay={0.15}>
+        <p className="mx-auto mt-6 max-w-xl text-balance text-body-lg text-ms-fog">
+          A 50% deposit secures your build slot. About two months from deposit
+          to keys in hand.
+        </p>
+      </Reveal>
+      <Reveal y={20} delay={0.25} className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
         <Link
           href="/configure"
           className={cn(
@@ -35,7 +39,7 @@ export function FinalCta() {
         >
           Schedule a Consultation
         </Link>
-      </div>
+      </Reveal>
     </section>
   );
 }
