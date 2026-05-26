@@ -44,11 +44,14 @@ export function HeroScroll() {
       const build = () => {
         const duration = video.duration || 10;
         video.pause();
+        video.currentTime = 0;
 
-        // Scrub the film by scroll.
+        // Scrub the film by scroll. immediateRender:false keeps the hero on the
+        // first (exterior) frame until the user actually scrolls.
         gsap.to(video, {
           currentTime: duration,
           ease: "none",
+          immediateRender: false,
           scrollTrigger: {
             trigger: section,
             start: "top top",
