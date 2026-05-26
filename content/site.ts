@@ -50,7 +50,7 @@ export const site: SiteConfig = {
       links: [
         {
           label: "Instagram",
-          href: "https://instagram.com/bucksd",
+          href: "https://instagram.com/mothershipvehicles",
           external: true,
         },
         { label: "Email", href: "mailto:brandon@bucksd.com", external: true },
@@ -59,7 +59,7 @@ export const site: SiteConfig = {
   ],
 
   socials: [
-    { label: "Instagram", href: "https://instagram.com/bucksd" },
+    { label: "Instagram", href: "https://instagram.com/mothershipvehicles" },
     { label: "Email", href: "mailto:brandon@bucksd.com" },
   ],
 };

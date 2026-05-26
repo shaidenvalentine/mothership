@@ -9,7 +9,7 @@ export default function ContactPage() {
     <RouteStub
       eyebrow="Contact"
       title="Book a discovery call with Shaiden."
-      note="Email brandon@bucksd.com or DM @bucksd on Instagram. Booking flow coming soon."
+      note="Email brandon@bucksd.com or DM @mothershipvehicles on Instagram. Booking flow coming soon."
     />
   );
 }
