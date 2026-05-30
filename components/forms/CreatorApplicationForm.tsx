@@ -1,15 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { buttonVariants } from "@/components/ui/button";
+import { formatLong, nightsBetween } from "@/lib/dates";
 import { creatorFields, type CreatorInput } from "@/lib/schemas";
 import { cn } from "@/lib/utils";
 import { errorClass, inputClass, labelClass } from "./field-styles";
 
-export function CreatorApplicationForm() {
+interface CreatorApplicationFormProps {
+  /** Pickup date pre-selected on the calendar (YYYY-MM-DD). */
+  pickupDate?: string;
+  /** Return date pre-selected on the calendar (YYYY-MM-DD). */
+  returnDate?: string;
+}
+
+export function CreatorApplicationForm({
+  pickupDate,
+  returnDate,
+}: CreatorApplicationFormProps = {}) {
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
@@ -17,8 +28,22 @@ export function CreatorApplicationForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<CreatorInput>({ resolver: zodResolver(creatorFields) });
+
+  // Dates chosen on the availability calendar flow straight into the form.
+  const datesFromCalendar = Boolean(pickupDate && returnDate);
+  useEffect(() => {
+    if (pickupDate) {
+      setValue("pickupDate", pickupDate, { shouldValidate: true });
+    }
+  }, [pickupDate, setValue]);
+  useEffect(() => {
+    if (returnDate) {
+      setValue("returnDate", returnDate, { shouldValidate: true });
+    }
+  }, [returnDate, setValue]);
 
   const onSubmit = async (data: CreatorInput) => {
     setStatus("submitting");
@@ -123,36 +148,52 @@ export function CreatorApplicationForm() {
       <fieldset className="space-y-6">
         <legend className="ms-caption text-ms-ion">The trip</legend>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div>
-            <label className={labelClass} htmlFor="cr-pickup">
-              Pickup date
-            </label>
-            <input
-              id="cr-pickup"
-              type="date"
-              className={inputClass}
-              {...register("pickupDate")}
-            />
-            {errors.pickupDate ? (
-              <p className={errorClass}>{errors.pickupDate.message}</p>
-            ) : null}
+        {datesFromCalendar ? (
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-ms-ion/40 bg-ms-ion/5 p-5">
+            <div>
+              <span className="ms-caption text-ms-ion">Your dates</span>
+              <p className="mt-2 font-display text-display-md leading-tight text-ms-bone">
+                {formatLong(pickupDate!)} &ndash; {formatLong(returnDate!)}
+              </p>
+            </div>
+            <span className="font-mono text-body-sm text-ms-fog">
+              {nightsBetween(pickupDate!, returnDate!)} nights
+            </span>
+            <input type="hidden" {...register("pickupDate")} />
+            <input type="hidden" {...register("returnDate")} />
           </div>
-          <div>
-            <label className={labelClass} htmlFor="cr-return">
-              Return date
-            </label>
-            <input
-              id="cr-return"
-              type="date"
-              className={inputClass}
-              {...register("returnDate")}
-            />
-            {errors.returnDate ? (
-              <p className={errorClass}>{errors.returnDate.message}</p>
-            ) : null}
+        ) : (
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div>
+              <label className={labelClass} htmlFor="cr-pickup">
+                Pickup date
+              </label>
+              <input
+                id="cr-pickup"
+                type="date"
+                className={inputClass}
+                {...register("pickupDate")}
+              />
+              {errors.pickupDate ? (
+                <p className={errorClass}>{errors.pickupDate.message}</p>
+              ) : null}
+            </div>
+            <div>
+              <label className={labelClass} htmlFor="cr-return">
+                Return date
+              </label>
+              <input
+                id="cr-return"
+                type="date"
+                className={inputClass}
+                {...register("returnDate")}
+              />
+              {errors.returnDate ? (
+                <p className={errorClass}>{errors.returnDate.message}</p>
+              ) : null}
+            </div>
           </div>
-        </div>
+        )}
 
         <div>
           <label className={labelClass} htmlFor="cr-destination">

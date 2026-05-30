@@ -4,8 +4,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/anim/Reveal";
 import { WordReveal } from "@/components/anim/WordReveal";
 import { Media } from "@/components/media/Media";
-import { CreatorApplicationForm } from "@/components/forms/CreatorApplicationForm";
-import { CreatorCalendar } from "@/components/forms/CreatorCalendar";
+import { CreatorBooking } from "@/components/forms/CreatorBooking";
 
 export const metadata: Metadata = {
   title: "Creators",
@@ -176,22 +175,7 @@ export default function CreatorsPage() {
         </div>
       </section>
 
-      {/* Availability */}
-      <section className="px-6 py-16 lg:px-16">
-        <div className="mx-auto max-w-[120rem]">
-          <Reveal y={12}>
-            <span className="ms-caption">Availability</span>
-          </Reveal>
-          <h2 className="mt-6 font-display text-display-lg leading-tight text-ms-bone">
-            <WordReveal text="When the van is free." />
-          </h2>
-          <Reveal y={20} delay={0.1} className="mt-10">
-            <CreatorCalendar />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Application — cinematic lead-in */}
+      {/* Plan your trip — cinematic lead-in */}
       <section className="relative mt-8 overflow-hidden">
         <div className="relative h-[44vh] min-h-[20rem] w-full overflow-hidden">
           <Image
@@ -206,22 +190,23 @@ export default function CreatorsPage() {
       </section>
 
       <section className="px-6 py-16 lg:px-16">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-[100rem]">
           <Reveal y={12}>
-            <span className="ms-caption">Application</span>
+            <span className="ms-caption text-ms-ion">Plan your trip</span>
           </Reveal>
-          <h2 className="mt-6 font-display text-display-xl leading-tight text-ms-bone">
-            <WordReveal text="Apply to be a creator." />
+          <h2 className="mt-6 max-w-3xl font-display text-display-xl leading-tight text-ms-bone">
+            <WordReveal text="See what's open. Claim your dates." />
           </h2>
           <Reveal y={16} delay={0.1}>
-            <p className="mt-8 max-w-xl text-body-lg text-ms-fog">
-              Tell us who you are and where you want to take her. Approval is
-              per-trip — we review for fit, dates, and route.
+            <p className="mt-8 max-w-2xl text-body-lg text-ms-fog">
+              The calendar shows exactly when the demo van is free. Choose your
+              window, see what we&rsquo;d expect in exchange, and apply — all in
+              one place.
             </p>
           </Reveal>
-          <Reveal y={24} delay={0.15} className="mt-12">
-            <CreatorApplicationForm />
-          </Reveal>
+          <div className="mt-14">
+            <CreatorBooking />
+          </div>
         </div>
       </section>
 
