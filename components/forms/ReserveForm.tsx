@@ -17,7 +17,12 @@ const timelines = [
   "Just exploring",
 ];
 
-export function ReserveForm() {
+interface ReserveFormProps {
+  /** A configured build spec to attach to the reservation, if any. */
+  presetMessage?: string;
+}
+
+export function ReserveForm({ presetMessage }: ReserveFormProps = {}) {
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
@@ -31,10 +36,14 @@ export function ReserveForm() {
   const onSubmit = async (data: ReserveInput) => {
     setStatus("submitting");
     try {
+      // Attach the configured build spec without clobbering the user's note.
+      const message = [presetMessage, data.message]
+        .filter(Boolean)
+        .join("\n\n");
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "reserve", ...data }),
+        body: JSON.stringify({ type: "reserve", ...data, message }),
       });
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
@@ -134,6 +143,22 @@ export function ReserveForm() {
           <p className={errorClass}>{errors.useCase.message}</p>
         ) : null}
       </div>
+
+      {presetMessage ? (
+        <div className="rounded-xl border border-ms-ion/40 bg-ms-ion/5 p-5">
+          <span className="ms-caption text-ms-ion">Your build</span>
+          <ul className="mt-3 space-y-1">
+            {presetMessage.split("\n").filter(Boolean).map((line) => (
+              <li key={line} className="text-body-sm text-ms-bone">
+                {line}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-body-sm text-ms-ash">
+            Attached to your reservation. Adjust it any time above.
+          </p>
+        </div>
+      ) : null}
 
       <div>
         <label className={labelClass} htmlFor="message">
