@@ -14,6 +14,7 @@ export const site: SiteConfig = {
     { label: "Process", href: "/process" },
     { label: "Builds", href: "/vans" },
     { label: "Tax Benefits", href: "/tax-benefits" },
+    { label: "Creators", href: "/creators" },
     { label: "About", href: "/about" },
   ],
 

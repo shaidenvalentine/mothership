@@ -54,16 +54,26 @@ export function Nav() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <Link
-          href={site.primaryCta.href}
-          className={cn(
-            buttonVariants({ size: "sm" }),
-            "rounded-full bg-ms-bone px-5 text-ms-black hover:bg-ms-paper",
-          )}
-        >
-          {site.primaryCta.label}
-        </Link>
+        {/* Right cluster */}
+        <div className="flex items-center gap-5">
+          {/* Creators — always visible (covers mobile, where the centered
+              menu is hidden) so creators can find the demo-van program. */}
+          <Link
+            href="/creators"
+            className="text-body-sm text-ms-fog transition-colors hover:text-ms-bone md:hidden"
+          >
+            Creators
+          </Link>
+          <Link
+            href={site.primaryCta.href}
+            className={cn(
+              buttonVariants({ size: "sm" }),
+              "rounded-full bg-ms-bone px-5 text-ms-black hover:bg-ms-paper",
+            )}
+          >
+            {site.primaryCta.label}
+          </Link>
+        </div>
       </nav>
     </header>
   );
