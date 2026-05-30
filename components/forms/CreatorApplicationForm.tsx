@@ -238,7 +238,9 @@ export function CreatorApplicationForm({
           <span>
             I&apos;ve read the house rules above and will treat the demo van
             accordingly — no heavy off-roading, no towing, smoke-free, returned
-            cleaner than I got it.
+            cleaner than I got it. I&apos;ll carry comprehensive auto insurance
+            in my name, cover charging costs, and take full responsibility for
+            any damage during my trip.
           </span>
         </label>
         {errors.agreeRules ? (

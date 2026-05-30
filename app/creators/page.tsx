@@ -20,8 +20,8 @@ const dealCards = [
   },
   {
     tag: "What you bring",
-    title: "Insurance, gas, care.",
-    body: "Comprehensive auto insurance in your name, fuel for the trip, and the same care you'd give your own one-of-one.",
+    title: "Insurance, charging, care.",
+    body: "Comprehensive auto insurance in your name, charging costs on the road, and full responsibility for any damage — the same care you'd give your own one-of-one.",
   },
   {
     tag: "In exchange",
@@ -53,7 +53,9 @@ const houseRules = [
   "No heavy off-roading — forest-service roads and light gravel only. No towing.",
   "Smoke-free, pet-considerate, accident-free.",
   "Return it as clean as you got it — or cleaner.",
+  "She's all-electric — charging costs on the trip are yours.",
   "Comprehensive auto insurance in your name is required before pickup.",
+  "Any damage during your trip is your responsibility to cover, in full.",
 ];
 
 export default function CreatorsPage() {
