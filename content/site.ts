@@ -13,6 +13,7 @@ export const site: SiteConfig = {
   navLinks: [
     { label: "Process", href: "/process" },
     { label: "Builds", href: "/vans" },
+    { label: "Events", href: "/events" },
     { label: "Tax Benefits", href: "/tax-benefits" },
     { label: "Creators", href: "/creators" },
     { label: "About", href: "/about" },
@@ -35,6 +36,7 @@ export const site: SiteConfig = {
       links: [
         { label: "About", href: "/about" },
         { label: "Contact", href: "/contact" },
+        { label: "See it in person", href: "/events" },
         { label: "Tax Benefits", href: "/tax-benefits" },
       ],
     },

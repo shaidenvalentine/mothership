@@ -6,6 +6,7 @@ import {
   creatorFields,
   newsletterFields,
   reserveFields,
+  viewingFields,
 } from "@/lib/schemas";
 
 export async function POST(req: Request) {
@@ -77,6 +78,26 @@ export async function POST(req: Request) {
       `Trip: ${d.pickupDate} → ${d.returnDate}`,
       `Destination: ${d.destination}`,
       `Content plan: ${d.contentPlan}`,
+    ]);
+    return NextResponse.json({ ok: true });
+  }
+
+  if (type === "viewing") {
+    const parsed = viewingFields.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { ok: false, error: "Please check the form." },
+        { status: 400 },
+      );
+    }
+    const d = parsed.data;
+    await sendLeadEmail("New Mothership in-person viewing request", [
+      `Name: ${d.name}`,
+      `Email: ${d.email}`,
+      `Phone: ${d.phone || "—"}`,
+      `Event / where: ${d.event || "—"}`,
+      `Preferred date: ${d.preferredDate || "—"}`,
+      `Message: ${d.message || "—"}`,
     ]);
     return NextResponse.json({ ok: true });
   }

@@ -49,8 +49,20 @@ export const creatorFields = z.object({
 });
 export type CreatorInput = z.infer<typeof creatorFields>;
 
+/** In-person viewing / test appointment request (the /events page). */
+export const viewingFields = z.object({
+  name: z.string().min(2, "Please enter your name"),
+  email: z.email("Enter a valid email"),
+  phone: z.string().optional(),
+  event: z.string().optional(),
+  preferredDate: z.string().optional(),
+  message: z.string().max(2000).optional(),
+});
+export type ViewingInput = z.infer<typeof viewingFields>;
+
 export type LeadType =
   | "reserve"
   | "consultation"
   | "newsletter"
-  | "creator";
+  | "creator"
+  | "viewing";
