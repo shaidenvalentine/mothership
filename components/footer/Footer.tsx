@@ -1,12 +1,10 @@
 import Link from "next/link";
 
-import { buttonVariants } from "@/components/ui/button";
+import { NewsletterForm } from "@/components/forms/NewsletterForm";
 import { site } from "@/content/site";
-import { cn } from "@/lib/utils";
 
 /**
  * Minimal footer: wordmark + newsletter, 4 link columns, socials, address.
- * Newsletter is a non-wired placeholder (real Resend double opt-in in Phase 5).
  */
 export function Footer() {
   return (
@@ -22,25 +20,7 @@ export function Footer() {
               {site.wordmark}
             </Link>
             <p className="mt-4 text-body-sm text-ms-ash">{site.tagline}</p>
-
-            <form className="mt-8 flex max-w-xs items-center gap-2">
-              <input
-                type="email"
-                name="email"
-                placeholder="Email address"
-                aria-label="Email address"
-                className="h-9 w-full rounded-md border border-ms-graphite bg-ms-obsidian px-3 text-body-sm text-ms-bone placeholder:text-ms-ash focus:border-ms-ion focus:outline-none"
-              />
-              <button
-                type="button"
-                className={cn(
-                  buttonVariants({ size: "sm", variant: "outline" }),
-                  "shrink-0 border-ms-graphite text-ms-bone hover:bg-ms-obsidian",
-                )}
-              >
-                Join
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
 
           {/* Link columns */}

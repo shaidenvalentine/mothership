@@ -6,7 +6,7 @@ export const site: SiteConfig = {
   tagline: "Luxury redefined.",
   description:
     "The all-electric, self-charging, fully off-grid camper van of the future. A proprietary, carbon-fiber 3D-printed interior on the Mercedes Sprinter — built by hand in San Diego, delivered across the continental US.",
-  url: "https://mothership.com",
+  url: "https://mothershipvans.com",
   address: "San Diego, California",
   copyright: "Mothership © 2026",
 
@@ -43,6 +43,7 @@ export const site: SiteConfig = {
         { label: "Reserve a build", href: "/configure" },
         { label: "Schedule a consultation", href: "/contact" },
         { label: "Section 179", href: "/tax-benefits" },
+        { label: "Creators", href: "/creators" },
       ],
     },
     {
