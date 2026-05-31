@@ -4,7 +4,14 @@ import { useState } from "react";
 
 import { Reveal } from "@/components/anim/Reveal";
 import { WordReveal } from "@/components/anim/WordReveal";
-import { alwaysExpected, tierForNights } from "@/content/availability";
+import {
+  alwaysExpected as defaultAlwaysExpected,
+  applicationWindow as defaultWindow,
+  blocks as defaultBlocks,
+  contentTiers as defaultTiers,
+  type AvailabilityBlock,
+  type ContentTier,
+} from "@/content/availability";
 import { formatLong, nightsBetween } from "@/lib/dates";
 import { cn } from "@/lib/utils";
 import {
@@ -12,6 +19,19 @@ import {
   type DateRange,
 } from "./AvailabilityCalendar";
 import { CreatorApplicationForm } from "./CreatorApplicationForm";
+
+interface CreatorBookingProps {
+  blocks?: AvailabilityBlock[];
+  applicationWindow?: { start: string; end: string };
+  contentTiers?: ContentTier[];
+  alwaysExpected?: string[];
+}
+
+/** Pick the richest tier a trip length qualifies for, from a given tier list. */
+function pickTier(tiers: ContentTier[], nights: number): ContentTier | null {
+  if (nights <= 0) return null;
+  return [...tiers].reverse().find((t) => nights >= t.minNights) ?? null;
+}
 
 function Step({
   n,
@@ -37,12 +57,17 @@ function Step({
   );
 }
 
-export function CreatorBooking() {
+export function CreatorBooking({
+  blocks = defaultBlocks,
+  applicationWindow = defaultWindow,
+  contentTiers = defaultTiers,
+  alwaysExpected = defaultAlwaysExpected,
+}: CreatorBookingProps = {}) {
   const [range, setRange] = useState<DateRange | null>(null);
 
   const complete = Boolean(range && range.end);
   const nights = complete ? nightsBetween(range!.start, range!.end!) : 0;
-  const tier = tierForNights(nights);
+  const tier = pickTier(contentTiers, nights);
 
   return (
     <div className="space-y-20">
@@ -58,7 +83,12 @@ export function CreatorBooking() {
           them.
         </p>
         <div className="mt-10 rounded-2xl border border-ms-graphite/60 bg-ms-obsidian p-6 lg:p-10">
-          <AvailabilityCalendar value={range} onChange={setRange} />
+          <AvailabilityCalendar
+            value={range}
+            onChange={setRange}
+            blocks={blocks}
+            applicationWindow={applicationWindow}
+          />
         </div>
 
         {/* Selection summary */}

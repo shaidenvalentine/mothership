@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 
-import { Footer } from "@/components/footer/Footer";
-import { Nav } from "@/components/nav/Nav";
-import { LenisProvider } from "@/components/providers/LenisProvider";
 import { site } from "@/content/site";
 import { geist, interTight, jetbrainsMono } from "./fonts";
 import "./globals.css";
@@ -35,11 +32,7 @@ export default function RootLayout({
       className={`${geist.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-        <LenisProvider>
-          <Nav />
-          {children}
-          <Footer />
-        </LenisProvider>
+        {children}
         <Analytics />
       </body>
     </html>

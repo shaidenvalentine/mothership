@@ -5,12 +5,16 @@ import { Reveal } from "@/components/anim/Reveal";
 import { WordReveal } from "@/components/anim/WordReveal";
 import { Media } from "@/components/media/Media";
 import { CreatorBooking } from "@/components/forms/CreatorBooking";
+import { getAvailability } from "@/lib/availability";
 
 export const metadata: Metadata = {
   title: "Creators",
   description:
     "Drive the Mothership demo van. Trade content. A private program for creators we trust.",
 };
+
+// Reads live availability (DB bookings) at request time, with a file fallback.
+export const dynamic = "force-dynamic";
 
 const dealCards = [
   {
@@ -58,7 +62,8 @@ const houseRules = [
   "Any damage during your trip is your responsibility to cover, in full.",
 ];
 
-export default function CreatorsPage() {
+export default async function CreatorsPage() {
+  const availability = await getAvailability();
   return (
     <main className="bg-ms-black">
       {/* Hero — full-bleed cinematic */}
@@ -207,7 +212,12 @@ export default function CreatorsPage() {
             </p>
           </Reveal>
           <div className="mt-14">
-            <CreatorBooking />
+            <CreatorBooking
+              blocks={availability.blocks}
+              applicationWindow={availability.applicationWindow}
+              contentTiers={availability.contentTiers}
+              alwaysExpected={availability.alwaysExpected}
+            />
           </div>
         </div>
       </section>

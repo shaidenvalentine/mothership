@@ -3,8 +3,9 @@
 import { useEffect, useMemo, useState } from "react";
 
 import {
-  applicationWindow,
-  blocks,
+  applicationWindow as defaultWindow,
+  blocks as defaultBlocks,
+  type AvailabilityBlock,
   type DayStatus,
 } from "@/content/availability";
 import {
@@ -27,6 +28,10 @@ export interface DateRange {
 interface AvailabilityCalendarProps {
   value: DateRange | null;
   onChange: (range: DateRange | null) => void;
+  /** Committed dates. Defaults to the file blocks; the public page passes DB ones. */
+  blocks?: AvailabilityBlock[];
+  /** Open season. Defaults to the file window; the public page passes the DB/settings one. */
+  applicationWindow?: { start: string; end: string };
 }
 
 interface DayInfo {
@@ -37,33 +42,33 @@ interface DayInfo {
 const WEEKDAYS = ["S", "M", "T", "W", "T", "F", "S"];
 
 /** Which committed block (if any) covers a given day. */
-function blockFor(date: string) {
+function blockFor(blocks: AvailabilityBlock[], date: string) {
   return blocks.find((b) => date >= b.start && date <= b.end);
 }
 
-function dayInfo(date: string, today: string): DayInfo {
+function dayInfo(
+  blocks: AvailabilityBlock[],
+  window: { start: string; end: string },
+  date: string,
+  today: string,
+): DayInfo {
   if (date < today) return { status: "past" };
-  if (date < applicationWindow.start || date > applicationWindow.end) {
+  if (date < window.start || date > window.end) {
     return { status: "closed" };
   }
-  const block = blockFor(date);
+  const block = blockFor(blocks, date);
   if (block) return { status: block.status, label: block.label };
   return { status: "open" };
 }
 
-/** True only if every day in [start, end] is open. */
-function rangeIsClear(start: string, end: string, today: string): boolean {
-  for (const day of eachDay(start, end)) {
-    if (dayInfo(day, today).status !== "open") return false;
-  }
-  return true;
-}
-
 /** List of {year, month} to render — every month the window touches, from today on. */
-function monthsToRender(today: string): Array<{ year: number; month: number }> {
-  const startKey = applicationWindow.start > today ? applicationWindow.start : today;
+function monthsToRender(
+  window: { start: string; end: string },
+  today: string,
+): Array<{ year: number; month: number }> {
+  const startKey = window.start > today ? window.start : today;
   const [sy, sm] = startKey.split("-").map(Number);
-  const [ey, em] = applicationWindow.end.split("-").map(Number);
+  const [ey, em] = window.end.split("-").map(Number);
   const out: Array<{ year: number; month: number }> = [];
   let y = sy;
   let m = sm;
@@ -82,14 +87,16 @@ function monthsToRender(today: string): Array<{ year: number; month: number }> {
 export function AvailabilityCalendar({
   value,
   onChange,
+  blocks = defaultBlocks,
+  applicationWindow = defaultWindow,
 }: AvailabilityCalendarProps) {
   // Compute "today" only after mount so the server-rendered markup (which has
   // no stable notion of the visitor's date) doesn't cause a hydration mismatch.
   const [today, setToday] = useState<string | null>(null);
   useEffect(() => setToday(todayISO()), []);
   const months = useMemo(
-    () => (today ? monthsToRender(today) : []),
-    [today],
+    () => (today ? monthsToRender(applicationWindow, today) : []),
+    [today, applicationWindow],
   );
 
   if (!today) {
@@ -106,8 +113,18 @@ export function AvailabilityCalendar({
   // closures below narrow correctly.
   const currentToday: string = today;
 
+  // Closures over the active blocks/window for this render.
+  const di = (date: string) =>
+    dayInfo(blocks, applicationWindow, date, currentToday);
+  const rangeClear = (start: string, end: string) => {
+    for (const day of eachDay(start, end)) {
+      if (di(day).status !== "open") return false;
+    }
+    return true;
+  };
+
   function handleDayClick(date: string) {
-    const info = dayInfo(date, currentToday);
+    const info = di(date);
     if (info.status !== "open") return;
 
     // Fresh selection: nothing chosen yet, or a complete range already exists.
@@ -126,7 +143,7 @@ export function AvailabilityCalendar({
       return;
     }
     // date > start: only accept if the whole span is clear.
-    if (rangeIsClear(value.start, date, currentToday)) {
+    if (rangeClear(value.start, date)) {
       onChange({ start: value.start, end: date });
     } else {
       onChange({ start: date, end: null }); // blocked in between → restart
@@ -172,7 +189,7 @@ export function AvailabilityCalendar({
                 ))}
                 {cells.map((date, i) => {
                   if (!date) return <span key={`b-${i}`} />;
-                  const info = dayInfo(date, currentToday);
+                  const info = di(date);
                   const selectable = info.status === "open";
                   const selected = isSelected(date);
                   const endpoint = isEndpoint(date);

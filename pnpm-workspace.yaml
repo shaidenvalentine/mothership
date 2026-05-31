@@ -6,3 +6,4 @@ allowBuilds:
   core-js: false
   protobufjs: false
   msw: false
+  bufferutil: set this to true or false
