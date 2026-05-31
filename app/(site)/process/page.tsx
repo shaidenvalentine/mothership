@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 
 import { RouteStub } from "@/components/placeholder/RouteStub";
 
-export const metadata: Metadata = { title: "Process" };
+export const metadata: Metadata = {
+  title: "Process",
+  description:
+    "From discovery call to keys in hand — how a Mothership build works: deposit, ~2-month build, inspection, and handoff in San Diego or shipped across the US.",
+};
 
 const steps = [
   {

@@ -18,6 +18,20 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
     type: "website",
+    images: [
+      {
+        url: "/images/hero-exterior-sunset.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The Mothership — a 3D-printed luxury electric camper van at sunset",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — Mercedes Sprinter luxury camper vans`,
+    description: site.description,
+    images: ["/images/hero-exterior-sunset.jpg"],
   },
 };
 

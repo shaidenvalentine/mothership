@@ -1,4 +1,5 @@
 import { getAvailability } from "@/lib/availability";
+import { SubmitButton } from "../_components/SubmitButton";
 import { getDealConfig } from "@/lib/deal-config";
 import {
   ensureDefaultTeam,
@@ -70,9 +71,7 @@ export default async function SettingsPage() {
               className="mt-1 block rounded-md border border-ms-graphite bg-ms-black px-3 py-2 text-sm text-ms-bone"
             />
           </label>
-          <button className="rounded-md border border-ms-graphite px-4 py-2 text-sm text-ms-bone transition hover:border-ms-bone">
-            Save window
-          </button>
+          <SubmitButton>Save window</SubmitButton>
         </form>
       </section>
 
@@ -91,9 +90,7 @@ export default async function SettingsPage() {
               className="mt-1 block w-28 rounded-md border border-ms-graphite bg-ms-black px-3 py-2 text-sm text-ms-bone"
             />
           </label>
-          <button className="rounded-md border border-ms-graphite px-4 py-2 text-sm text-ms-bone transition hover:border-ms-bone">
-            Save
-          </button>
+          <SubmitButton>Save</SubmitButton>
         </form>
       </section>
 
@@ -125,9 +122,9 @@ export default async function SettingsPage() {
               className="mt-1 w-full rounded-md border border-ms-graphite bg-ms-black px-3 py-2 font-mono text-xs text-ms-bone"
             />
           </label>
-          <button className="rounded-md border border-ms-graphite px-4 py-2 text-sm text-ms-bone transition hover:border-ms-bone">
+          <SubmitButton jsonFields={["contentTiers", "alwaysExpected"]}>
             Save expectations
-          </button>
+          </SubmitButton>
         </form>
       </section>
 
@@ -157,9 +154,9 @@ export default async function SettingsPage() {
               className="mt-1 w-full rounded-md border border-ms-graphite bg-ms-black px-3 py-2 font-mono text-xs text-ms-bone"
             />
           </label>
-          <button className="rounded-md border border-ms-graphite px-4 py-2 text-sm text-ms-bone transition hover:border-ms-bone">
+          <SubmitButton jsonFields={["skus", "addOns"]}>
             Save products
-          </button>
+          </SubmitButton>
         </form>
       </section>
 
@@ -178,9 +175,9 @@ export default async function SettingsPage() {
             defaultValue={JSON.stringify(dealConfig.commission, null, 2)}
             className="w-full rounded-md border border-ms-graphite bg-ms-black px-3 py-2 font-mono text-xs text-ms-bone"
           />
-          <button className="rounded-md border border-ms-graphite px-4 py-2 text-sm text-ms-bone transition hover:border-ms-bone">
+          <SubmitButton jsonFields={["commissionConfig"]}>
             Save commission rules
-          </button>
+          </SubmitButton>
         </form>
       </section>
 
@@ -225,9 +222,7 @@ export default async function SettingsPage() {
             placeholder="Role (optional)"
             className="flex-1 rounded-md border border-ms-graphite bg-ms-black px-3 py-2 text-sm text-ms-bone"
           />
-          <button className="rounded-md border border-ms-graphite px-4 py-2 text-sm text-ms-bone transition hover:border-ms-bone">
-            Add member
-          </button>
+          <SubmitButton pendingLabel="Adding…">Add member</SubmitButton>
         </form>
       </section>
 
@@ -245,9 +240,9 @@ export default async function SettingsPage() {
             defaultValue={sources.join("\n")}
             className="w-full rounded-md border border-ms-graphite bg-ms-black px-3 py-2 font-mono text-xs text-ms-bone"
           />
-          <button className="mt-2 rounded-md border border-ms-graphite px-4 py-2 text-sm text-ms-bone transition hover:border-ms-bone">
-            Save sources
-          </button>
+          <span className="mt-2 inline-block">
+            <SubmitButton>Save sources</SubmitButton>
+          </span>
         </form>
       </section>
 

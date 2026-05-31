@@ -12,4 +12,14 @@ export interface Van {
   accent: string;
   /** Card / hero image (path under /public). */
   image: string;
+  /** Longer editorial description for the detail page. */
+  description?: string;
+  /** Additional images for the detail-page gallery (paths under /public). */
+  gallery?: string[];
+}
+
+/** A labelled spec line shown on van detail pages. */
+export interface VanSpec {
+  label: string;
+  value: string;
 }

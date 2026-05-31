@@ -54,12 +54,14 @@ export function CommissionsEditor({
                 </span>
                 <button
                   disabled={pending}
-                  onClick={() =>
+                  onClick={() => {
+                    if (!window.confirm(`Remove the ${c.payee} commission line?`))
+                      return;
                     startTransition(async () => {
                       await removeCommissionAction(orderId, c.id);
                       router.refresh();
-                    })
-                  }
+                    });
+                  }}
                   className="text-xs text-ms-ash transition hover:text-ms-danger"
                 >
                   ✕

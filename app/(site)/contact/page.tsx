@@ -5,7 +5,11 @@ import { WordReveal } from "@/components/anim/WordReveal";
 import { CalEmbed } from "@/components/forms/CalEmbed";
 import { ContactForm } from "@/components/forms/ContactForm";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Book a discovery call with Shaiden, or send a note. Start the conversation about your Mothership build.",
+};
 
 export default function ContactPage() {
   return (
@@ -35,8 +39,21 @@ export default function ContactPage() {
 
         <Reveal y={16} delay={0.1}>
           <p className="mt-12 text-body-sm text-ms-ash">
-            Prefer to reach out directly? Email brandon@bucksd.com or DM
-            @mothershipvehicles on Instagram.
+            Prefer to reach out directly? Email{" "}
+            <a
+              href="mailto:shaidenvalentine@gmail.com"
+              className="text-ms-fog underline-offset-4 transition-colors hover:text-ms-bone hover:underline"
+            >
+              shaidenvalentine@gmail.com
+            </a>
+            , call or text{" "}
+            <a
+              href="tel:+17604021716"
+              className="text-ms-fog underline-offset-4 transition-colors hover:text-ms-bone hover:underline"
+            >
+              +1 760-402-1716
+            </a>
+            , or DM @mothershipvehicles on Instagram.
           </p>
         </Reveal>
       </div>

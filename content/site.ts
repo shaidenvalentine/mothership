@@ -57,13 +57,13 @@ export const site: SiteConfig = {
           href: "https://instagram.com/mothershipvehicles",
           external: true,
         },
-        { label: "Email", href: "mailto:brandon@bucksd.com", external: true },
+        { label: "Email", href: "mailto:shaidenvalentine@gmail.com", external: true },
       ],
     },
   ],
 
   socials: [
     { label: "Instagram", href: "https://instagram.com/mothershipvehicles" },
-    { label: "Email", href: "mailto:brandon@bucksd.com" },
+    { label: "Email", href: "mailto:shaidenvalentine@gmail.com" },
   ],
 };

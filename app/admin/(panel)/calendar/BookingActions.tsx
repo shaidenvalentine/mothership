@@ -59,12 +59,14 @@ export function BookingActions({
       )}
       <button
         disabled={pending}
-        onClick={() =>
+        onClick={() => {
+          if (!window.confirm("Delete this booking? This can't be undone."))
+            return;
           startTransition(async () => {
             await deleteBookingAction(id);
             router.refresh();
-          })
-        }
+          });
+        }}
         className="rounded border border-ms-graphite px-2 py-1 text-xs text-ms-ash transition hover:text-ms-danger disabled:opacity-50"
       >
         Delete

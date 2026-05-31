@@ -11,7 +11,7 @@ export async function sendLeadEmail(
 ): Promise<{ sent: boolean }> {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.RESEND_FROM ?? "Mothership <onboarding@resend.dev>";
-  const to = process.env.LEAD_NOTIFICATION_EMAIL ?? "brandon@bucksd.com";
+  const to = process.env.LEAD_NOTIFICATION_EMAIL ?? "shaidenvalentine@gmail.com";
 
   if (!apiKey) {
     console.info(`[lead] (email skipped — no RESEND_API_KEY)\n${subject}\n${lines.join("\n")}`);

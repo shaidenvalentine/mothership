@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { isDbConfigured } from "@/lib/db";
+
+export const metadata: Metadata = {
+  title: "Mothership Ops",
+  robots: { index: false, follow: false },
+};
 import { logoutAction } from "../actions";
 import { AdminNav } from "./AdminNav";
 

@@ -2,6 +2,7 @@ import { getAvailability } from "@/lib/availability";
 import { listBookings } from "@/lib/db/queries";
 import { formatLong } from "@/lib/dates";
 import { Badge, BOOKING_STATUS_TONE } from "../_components/badges";
+import { SubmitButton } from "../_components/SubmitButton";
 import { addBookingAction } from "./actions";
 import { BookingActions } from "./BookingActions";
 
@@ -72,9 +73,9 @@ export default async function CalendarPage() {
           />
         </label>
         <div className="col-span-2 flex items-end sm:col-span-1">
-          <button className="w-full rounded-md bg-ms-bone px-4 py-2 text-sm font-medium text-ms-black transition hover:bg-ms-paper">
+          <SubmitButton variant="primary" className="w-full" pendingLabel="Adding…">
             Add
-          </button>
+          </SubmitButton>
         </div>
       </form>
 

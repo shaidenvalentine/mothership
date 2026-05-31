@@ -15,6 +15,7 @@ import { standardCommissions } from "@/lib/commission";
 import { getDealConfig } from "@/lib/deal-config";
 import { formatCents, formatDate, formatDateTime } from "@/lib/format";
 import { Badge, PIPELINE_STAGE_TONE } from "../../_components/badges";
+import { SubmitButton } from "../../_components/SubmitButton";
 import {
   recordPayment,
   removeUpdate,
@@ -148,9 +149,7 @@ export default async function OrderDetailPage({
                 />
               </div>
               <div className="col-span-2">
-                <button className="rounded-md border border-ms-graphite px-4 py-2 text-sm text-ms-bone transition hover:border-ms-bone">
-                  Save details
-                </button>
+                <SubmitButton>Save details</SubmitButton>
               </div>
             </form>
             {config.useCase || config.timeline ? (
@@ -212,9 +211,7 @@ export default async function OrderDetailPage({
                   in Settings).
                 </p>
               )}
-              <button className="rounded-md border border-ms-graphite px-4 py-2 text-sm text-ms-bone transition hover:border-ms-bone">
-                Apply configuration
-              </button>
+              <SubmitButton>Apply configuration</SubmitButton>
             </form>
           </section>
 
@@ -250,9 +247,13 @@ export default async function OrderDetailPage({
                           </p>
                         </div>
                         <form action={del}>
-                          <button className="text-xs text-ms-ash transition hover:text-ms-danger">
+                          <SubmitButton
+                            variant="link"
+                            confirm="Delete this build update? This can't be undone."
+                            pendingLabel="Deleting…"
+                          >
                             Delete
-                          </button>
+                          </SubmitButton>
                         </form>
                       </div>
                       {u.body ? (
@@ -387,9 +388,9 @@ export default async function OrderDetailPage({
                 </select>
               </div>
               <Field name="note" label="Note (optional)" defaultValue="" />
-              <button className="w-full rounded-md border border-ms-graphite px-4 py-2 text-sm text-ms-bone transition hover:border-ms-bone">
+              <SubmitButton className="w-full" pendingLabel="Recording…">
                 Add payment
-              </button>
+              </SubmitButton>
             </form>
 
             {payments.length > 0 ? (

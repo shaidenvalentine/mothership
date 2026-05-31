@@ -1,5 +1,5 @@
 export type { Feature } from "./feature";
-export type { Van } from "./van";
+export type { Van, VanSpec } from "./van";
 export type {
   NavLink,
   FooterLink,

@@ -7,7 +7,11 @@ import { Media } from "@/components/media/Media";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "The story behind Mothership — Brandon Buckley's patent-pending 3D-printed van technology and Shaiden Valentine's brand, joined to build the luxury electric adventure van of the future.",
+};
 
 const story = [
   "Brandon Buckley started by building the most advanced stealth campervans in the industry — quietly turning out some of the nicest, most technologically advanced vans anyone had ever seen, out of a shop in San Diego.",
